@@ -28,8 +28,9 @@ function shopping_list() {
         'price' => 9.98,
         'quantity' => "3 6-packs",
     );
-
     $output = "";
+    $total_price = 0;
+
     foreach($list as $item_to_buy => $value) {
 
         $output .= "<ul>" . $item_to_buy ;
@@ -40,5 +41,14 @@ function shopping_list() {
         $output .= "</ul>";
     }
 
-    return $output;
+    foreach($list as $item_to_buy) {
+        $total_price += $item_to_buy['price'] * $item_to_buy['quantity'];
+    }
+
+    // $total_price = $list['Eggs']['price'];
+
+    // return "<p>" . $total_price . "</p>" ;
+
+
+    return $output . "<p> Total: $" . $total_price . "</p>";
 }
