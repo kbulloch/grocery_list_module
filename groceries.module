@@ -1,0 +1,44 @@
+<?php
+function groceries_menu() {
+    $items = array();
+    $items['groceries_list'] = array(
+        'title' => 'Groceries List',
+        'page callback' => 'shopping_list',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function shopping_list() {
+    $list["Eggs"] = array(
+        'price' => 1.97,
+        'quantity' => "2 cartons",
+    );
+    $list["Garlic"] = array(
+        'price' => .75,
+        'quantity' => "2 cloves",
+    );
+    $list['Beets'] = array(
+        'price' => 2.49,
+        'quantity' => "8 pounds",
+    );
+
+    $list['Beer'] = array(
+        'price' => 9.98,
+        'quantity' => "3 6-packs",
+    );
+
+    $output = "";
+    foreach($list as $item_to_buy => $value) {
+
+        $output .= "<ul>" . $item_to_buy ;
+
+        foreach($value as $info_about_item) {
+            $output .= "<li>" . $info_about_item . "</li>";
+        }
+        $output .= "</ul>";
+    }
+
+    return $output;
+}
